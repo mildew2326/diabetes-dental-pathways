@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diabetes & Dental Health | Executive Briefing</title>
+  <meta name="description" content="Executive presentation on bidirectional pathways linking diabetes mellitus and periodontal disease — mechanisms, evidence, and clinical implications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c1222;
+      --ink-soft: #1a2336;
+      --muted: #5c6b84;
+      --line: rgba(12, 18, 34, 0.08);
+      --paper: #f6f4ef;
+      --card: #ffffff;
+      --accent: #0e7c66;
+      --accent-2: #1d4ed8;
+      --accent-soft: rgba(14, 124, 102, 0.1);
+      --warn: #b45309;
+      --danger: #b91c1c;
+      --shadow: 0 20px 60px rgba(12, 18, 34, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(14, 124, 102, 0.10), transparent 50%),
+        radial-gradient(900px 500px at 100% 0%, rgba(29, 78, 216, 0.08), transparent 45%),
+        var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    .deck {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: clamp(24px, 4vw, 56px);
+      overflow: auto;
+      animation: fadeIn 0.35s ease;
+    }
+    .slide.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .frame {
+      max-width: 1180px;
+      margin: 0 auto;
+      min-height: calc(100% - 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      color: var(--ink-soft);
+    }
+
+    p, li {
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .lede {
+      font-size: clamp(18px, 2vw, 22px);
+      max-width: 48ch;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      body { overflow: auto; }
+      .slide { position: relative; display: none; min-height: 100vh; }
+      .slide.active { display: block; }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 22px 20px;
+      box-shadow: var(--shadow);
+    }
+    .card.accent {
+      background: linear-gradient(160deg, #0e7c66 0%, #0b5f50 100%);
+      color: white;
+      border: none;
+    }
+    .card.accent p, .card.accent li, .card.accent h3 { color: rgba(255,255,255,0.92); }
+    .card.soft {
+      background: var(--accent-soft);
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .metric {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 1;
+      margin: 0 0 8px;
+      color: var(--accent);
+    }
+    .card.accent .metric { color: #fff; }
+    .metric-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card.accent .metric-label { color: rgba(255,255,255,0.75); }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .pill {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(12, 18, 34, 0.05);
+      color: var(--ink-soft);
+    }
+    .pill.green { background: rgba(14, 124, 102, 0.12); color: var(--accent); }
+    .pill.blue { background: rgba(29, 78, 216, 0.1); color: var(--accent-2); }
+
+    ul.clean {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    ul.clean li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+    }
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    @media (max-width: 900px) {
+      .flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); justify-self: center; }
+    }
+    .flow-box {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .arrow {
+      color: var(--accent);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .pathway {
+      display: grid;
+      gap: 10px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .step strong { display: block; margin-bottom: 4px; font-size: 15px; }
+    .step span { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    .refs {
+      font-size: 13px !important;
+      color: var(--muted) !important;
+      line-height: 1.5 !important;
+    }
+    .refs li { margin-bottom: 8px; font-size: 13px !important; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Controls */
+    .chrome {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px;
+      background: rgba(246, 244, 239, 0.82);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+    }
+    .progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(12, 18, 34, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      max-width: 320px;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(12,18,34,0.08); }
+    button.primary {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    .slide-count {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      min-width: 64px;
+      text-align: center;
+    }
+
+    .title-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .meta-item {
+      min-width: 140px;
+    }
+    .meta-item .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .meta-item .value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      background: white;
+      border-radius: 0 16px 16px 0;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+    }
+    .callout strong { color: var(--accent); }
+
+    .kbd {
+      font-size: 11px;
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      border-radius: 6px;
+      padding: 2px 6px;
+      background: white;
+      color: var(--muted);
+    }
+
+    @media print {
+      body { overflow: visible; background: white; }
+      .chrome { display: none; }
+      .slide {
+        position: relative;
+        display: block !important;
+        page-break-after: always;
+        min-height: 100vh;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+
+    <!-- 1 TITLE -->
+    <section class="slide active" data-title="Title">
+      <div class="frame">
+        <div class="eyebrow">Executive Scientific Briefing</div>
+        <h1>Diabetes &amp; Dental Health:<br /><em>Shared Pathways, Shared Risk</em></h1>
+        <p class="lede">
+          A one-page executive synthesis of peer-reviewed evidence and molecular pathways linking diabetes mellitus and periodontal disease — built for decision-makers in clinical, R&amp;D, and population health.
+        </p>
+        <div class="grid grid-3">
+          <div class="card soft">
+            <div class="metric-label">Core finding</div>
+            <p style="margin:8px 0 0; font-weight:600; color:var(--ink);">Bidirectional inflammatory loop: each disease amplifies the other.</p>
+          </div>
+          <div class="card soft">
+            <div class="metric-label">Clinical lever</div>
+            <p style="margin:8px 0 0; font-weight:600; color:var(--ink);">Periodontal therapy reduces HbA1c by ~0.4% on average.</p>
+          </div>
+          <div class="card soft">
+            <div class="metric-label">Pathway hub</div>
+            <p style="margin:8px 0 0; font-weight:600; color:var(--ink);">AGE–RAGE → NF-κB, innate immunity, bone remodeling.</p>
+          </div>
+        </div>
+        <div class="title-meta">
+          <div class="meta-item"><div class="label">Audience</div><div class="value">Executive / clinical leadership</div></div>
+          <div class="meta-item"><div class="label">Evidence base</div><div class="value">PubMed reviews + pathway DBs</div></div>
+          <div class="meta-item"><div class="label">Sources</div><div class="value">KEGG · Reactome · Open Targets</div></div>
+          <div class="meta-item"><div class="label">Navigate</div><div class="value"><span class="kbd">←</span> <span class="kbd">→</span> or buttons</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 BOTTOM LINE -->
+    <section class="slide" data-title="Bottom Line">
+      <div class="frame">
+        <div class="eyebrow">Slide 02 · Bottom Line</div>
+        <h2>What leaders need to know</h2>
+        <div class="two-col">
+          <div class="grid" style="gap:16px;">
+            <div class="card accent">
+              <h3>Strategic takeaway</h3>
+              <p style="font-size:20px; line-height:1.4; margin:0;">
+                Diabetes and periodontitis are not parallel comorbidities — they are mechanistically coupled. Treating one without the other leaves residual systemic risk and cost on the table.
+              </p>
+            </div>
+            <div class="grid grid-2">
+              <div class="card">
+                <div class="metric">2-way</div>
+                <div class="metric-label">Causal directionality</div>
+                <p style="margin:10px 0 0; font-size:14px;">Hyperglycemia worsens periodontitis; periodontitis worsens glycemic control.</p>
+              </div>
+              <div class="card">
+                <div class="metric">~0.43%</div>
+                <div class="metric-label">HbA1c drop after therapy</div>
+                <p style="margin:10px 0 0; font-size:14px;">Mean effect from RCTs / meta-analyses after periodontal treatment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Why it matters now</h3>
+            <ul class="clean">
+              <li>High co-prevalence in adult populations</li>
+              <li>Guideline-level consensus for co-management (EFP–WONCA)</li>
+              <li>Oral care is a low-cost adjunct to cardiometabolic risk control</li>
+              <li>Pathway biology suggests multi-disease prevention opportunities</li>
+              <li>Healthcare systems undervalue dental–medical integration</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill green">Clinical</span>
+              <span class="pill blue">Population health</span>
+              <span class="pill">R&amp;D / mechanisms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 THE LOOP -->
+    <section class="slide" data-title="The Loop">
+      <div class="frame">
+        <div class="eyebrow">Slide 03 · Bidirectional Model</div>
+        <h2>The diabetes–periodontitis loop</h2>
+        <div class="flow">
+          <div class="flow-box">Hyperglycemia<br /><span style="font-weight:500;color:var(--muted);font-size:12px;">AGEs · ROS · immune skew</span></div>
+          <div class="arrow">→</div>
+          <div class="flow-box">Oral dysbiosis &amp;<br />periodontal inflammation</div>
+          <div class="arrow">→</div>
+          <div class="flow-box">Systemic cytokines<br /><span style="font-weight:500;color:var(--muted);font-size:12px;">IL-1 · IL-6 · TNF</span></div>
+          <div class="arrow">→</div>
+          <div class="flow-box">Insulin resistance &amp;<br />worse glycemic control</div>
+        </div>
+        <div class="grid grid-2" style="margin-top:20px;">
+          <div class="card">
+            <h3>Diabetes → mouth</h3>
+            <ul class="clean">
+              <li>Higher risk, severity, and progression of periodontitis</li>
+              <li>Impaired neutrophils / macrophages; cytokine imbalance</li>
+              <li>Excess osteoclast activity; impaired bone repair</li>
+              <li>Xerostomia, caries risk, candidiasis, delayed healing</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Mouth → metabolism</h3>
+            <ul class="clean">
+              <li>Chronic periodontal load raises systemic inflammation</li>
+              <li>Insulin resistance and glucose intolerance signals</li>
+              <li>Possible nitrate-reducing microbiota / NO pathway impairment</li>
+              <li>Potential amplification of microvascular complications</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Evidence note:</strong> Longitudinal data show diabetes often precedes periodontitis; RCTs show treating periodontitis improves glycemic markers — supporting both epidemiologic and interventional linkage.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 PATHWAYS -->
+    <section class="slide" data-title="Pathways">
+      <div class="frame">
+        <div class="eyebrow">Slide 04 · Molecular Architecture</div>
+        <h2>Core pathways connecting the two diseases</h2>
+        <div class="grid grid-2">
+          <div class="pathway">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div>
+                <strong>AGE–RAGE axis (KEGG hsa04933)</strong>
+                <span>AGEs from hyperglycemia engage AGER/RAGE → NADPH oxidase, PKC, MAPKs → NF-κB → IL-1, IL-6, TNF, IL-8, adhesion molecules. Positive feedback via RAGE upregulation.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div>
+                <strong>Type 2 diabetes core (KEGG hsa04930)</strong>
+                <span>TNF and stress kinases (JNK/IKKβ/PKC) impair IRS-1 → insulin resistance. β-cell ROS and PDX-1 loss degrade insulin secretion.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div>
+                <strong>Innate immunity (Reactome)</strong>
+                <span>RAGE signaling intersects TRAF6–NF-κB, TAK1–IKK, IL-1, and TLR/MyD88 cascades — the same modules activated by periodontal pathogens.</span>
+              </div>
+            </div>
+          </div>
+          <div class="pathway">
+            <div class="step">
+              <div class="step-num">04</div>
+              <div>
+                <strong>Bone remodeling</strong>
+                <span>RANK/RANKL/OPG imbalance + diabetes-impaired osteoblast / MSC function → net bone loss and poorer regenerative capacity.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">05</div>
+              <div>
+                <strong>Tissue-level effectors</strong>
+                <span>Gingival fibroblasts express RAGE; AGE exposure drives IL-6/IL-8. Vitamin D can attenuate this cytokine response in experimental models.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">06</div>
+              <div>
+                <strong>Open Targets signal (T2D)</strong>
+                <span>High-association genes include KCNJ11, ABCC8, GCK, PPARG, INSR, GLP1R, AKT2 — metabolic machinery that sits upstream of inflammatory vulnerability.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 EVIDENCE -->
+    <section class="slide" data-title="Evidence">
+      <div class="frame">
+        <div class="eyebrow">Slide 05 · Peer-Reviewed Evidence</div>
+        <h2>What the literature establishes</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Epidemiology</h3>
+            <ul class="clean">
+              <li>Uncontrolled T2D elevates periodontal risk and severity</li>
+              <li>T1D and gestational diabetes also implicated</li>
+              <li>Diabetes associated with tooth loss and oral complications</li>
+              <li>Independent association affirmed in EFP consensus</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Mechanisms</h3>
+            <ul class="clean">
+              <li>Oral dysbiosis + barrier dysfunction</li>
+              <li>AGE–RAGE, oxidative stress, immune senescence</li>
+              <li>Altered adaptive/innate immune balance</li>
+              <li>Impaired bone regeneration pathways</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Intervention</h3>
+            <ul class="clean">
+              <li>Periodontal therapy → ~0.43% HbA1c reduction</li>
+              <li>Potential healthcare cost savings in diabetic cohorts</li>
+              <li>Treatment effect heterogeneity remains a research priority</li>
+              <li>Co-management pathways recommended</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:16px;">
+          <div class="card soft">
+            <h3>Consensus posture</h3>
+            <p style="margin:0;">EFP–WONCA Europe (2023): periodontitis is independently associated with diabetes and other NCDs; dentists and family doctors should collaborate on early detection and lifestyle risk management.</p>
+          </div>
+          <div class="card soft">
+            <h3>Evidence limits</h3>
+            <p style="margin:0;">Causality from periodontitis to diabetogenesis is plausible but not fully settled. Complication amplification (e.g., renal) is stronger observationally than experimentally proven as independent causation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 ACTIONS -->
+    <section class="slide" data-title="Actions">
+      <div class="frame">
+        <div class="eyebrow">Slide 06 · Executive Actions</div>
+        <h2>What to do with this science</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Clinical operations</h3>
+            <ul class="clean">
+              <li>Integrate periodontal screening into diabetes pathways</li>
+              <li>Screen for undiagnosed metabolic risk in dental settings</li>
+              <li>Optimize glycemic control before major oral surgery / implants</li>
+              <li>Treat active periodontitis as part of diabetes care bundles</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>System &amp; product strategy</h3>
+            <ul class="clean">
+              <li>Build referral loops between primary care and dentistry</li>
+              <li>Track dual metrics: HbA1c + periodontal status</li>
+              <li>Evaluate AGE–RAGE / inflammation modulation as adjunct R&amp;D themes</li>
+              <li>Educate patients on mouth–metabolism connection</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid grid-4" style="margin-top:16px;">
+          <div class="card accent">
+            <div class="metric" style="font-size:28px;">Screen</div>
+            <div class="metric-label">Both directions</div>
+          </div>
+          <div class="card accent">
+            <div class="metric" style="font-size:28px;">Treat</div>
+            <div class="metric-label">Active periodontitis</div>
+          </div>
+          <div class="card accent">
+            <div class="metric" style="font-size:28px;">Control</div>
+            <div class="metric-label">Glycemia first for surgery</div>
+          </div>
+          <div class="card accent">
+            <div class="metric" style="font-size:28px;">Connect</div>
+            <div class="metric-label">Dental ↔ medical teams</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 REFERENCES -->
+    <section class="slide" data-title="References">
+      <div class="frame">
+        <div class="eyebrow">Slide 07 · Sources</div>
+        <h2>Key peer-reviewed references</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>Primary literature</h3>
+            <ol class="refs">
+              <li>Graves, D. T., Levine, M. A., Aldosary, S., &amp; Demmer, R. T. (2026). Understanding the Periodontitis-Diabetes Linkage: Mechanisms and Evidence. <em>Journal of Dental Research, 105</em>(1), 21–30. https://doi.org/10.1177/00220345251388340</li>
+              <li>Genco, R. J., &amp; Borgnakke, W. S. (2020). Diabetes as a potential risk for periodontitis: association studies. <em>Periodontology 2000, 83</em>(1), 40–45. https://doi.org/10.1111/prd.12270</li>
+              <li>Herrera, D., et al. (2023). EFP–WONCA Europe consensus on periodontal–systemic associations. <em>Journal of Clinical Periodontology, 50</em>(6), 819–841. https://doi.org/10.1111/jcpe.13807</li>
+              <li>Alexander, M., et al. (2024). Pathology of Diabetes-Induced Immune Dysfunction. <em>International Journal of Molecular Sciences, 25</em>(13). https://doi.org/10.3390/ijms25137105</li>
+              <li>Isola, G., et al. (2023). Periodontal Health and Disease in the Context of Systemic Diseases. <em>Mediators of Inflammation, 2023</em>, 9720947. https://doi.org/10.1155/2023/9720947</li>
+              <li>Badiger, A. B., et al. (2019). Bilateral Interrelationship of Diabetes and Periodontium. <em>Current Diabetes Reviews, 15</em>(5), 357–362. https://doi.org/10.2174/1573399815666190115144534</li>
+              <li>Elenkova, M., et al. (2019). Vitamin D attenuates HGF inflammatory cytokines after AGE–RAGE interaction. <em>Journal of Periodontal Research, 54</em>(2), 154–163. https://doi.org/10.1111/jre.12613</li>
+            </ol>
+          </div>
+          <div class="grid" style="gap:16px;">
+            <div class="card soft">
+              <h3>Pathway databases</h3>
+              <ul class="clean">
+                <li>KEGG hsa04933 — AGE-RAGE signaling in diabetic complications</li>
+                <li>KEGG hsa04930 — Type II diabetes mellitus</li>
+                <li>Reactome R-HSA-879415 — AGE receptor signaling</li>
+                <li>Open Targets — Type 2 diabetes mellitus (MONDO_0005148)</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Data pipeline</h3>
+              <p style="margin:0; font-size:14px;">Evidence assembled via Hermes Agent MCP integrations (PubMed, BioContextAI / KEGG / Reactome / Open Targets). This deck is a synthesis for executive communication, not clinical advice.</p>
+              <div class="pill-row">
+                <span class="pill green">PubMed MCP</span>
+                <span class="pill blue">BioContext</span>
+                <span class="pill">Open Targets</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="footer-note">Not medical advice. For strategic and educational use. Always defer to current clinical guidelines and licensed practitioners for patient care decisions.</p>
+      </div>
+    </section>
+
+    <!-- 8 CLOSE -->
+    <section class="slide" data-title="Close">
+      <div class="frame">
+        <div class="eyebrow">Closing</div>
+        <h1>One mouth.<br /><em>One metabolism.</em><br />One care plan.</h1>
+        <p class="lede">
+          The peer-reviewed record is clear enough for action: couple glycemic control with periodontal health to improve outcomes, reduce complication risk, and close a preventable care gap.
+        </p>
+        <div class="grid grid-3">
+          <div class="card accent">
+            <h3>01</h3>
+            <p style="margin:0; font-size:18px; font-weight:600;">Screen both ways</p>
+          </div>
+          <div class="card accent">
+            <h3>02</h3>
+            <p style="margin:0; font-size:18px; font-weight:600;">Treat inflammation early</p>
+          </div>
+          <div class="card accent">
+            <h3>03</h3>
+            <p style="margin:0; font-size:18px; font-weight:600;">Integrate dental + medical teams</p>
+          </div>
+        </div>
+        <p class="footer-note">Diabetes &amp; Dental Health · Executive Briefing · Generated from peer-reviewed pathway synthesis</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="chrome">
+    <div class="slide-count" id="count">01 / 08</div>
+    <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+    <div class="nav">
+      <button type="button" id="prev" aria-label="Previous slide">← Prev</button>
+      <button type="button" class="primary" id="next" aria-label="Next slide">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let i = 0;
+    const count = document.getElementById('count');
+    const bar = document.getElementById('bar');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    function render() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      count.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      bar.style.width = ((i + 1) / slides.length * 100) + '%';
+      prev.disabled = i === 0;
+      next.textContent = i === slides.length - 1 ? 'Done' : 'Next →';
+      document.title = (slides[i].dataset.title || 'Slide') + ' · Diabetes & Dental Health';
+    }
+
+    function go(delta) {
+      i = Math.max(0, Math.min(slides.length - 1, i + delta));
+      render();
+      slides[i].scrollTop = 0;
+    }
+
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => {
+      if (i === slides.length - 1) return;
+      go(1);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+      if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+      if (e.key === 'Home') { i = 0; render(); }
+      if (e.key === 'End') { i = slides.length - 1; render(); }
+    });
+
+    // Touch swipe
+    let touchX = null;
+    window.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].screenX; }, { passive: true });
+    window.addEventListener('touchend', (e) => {
+      if (touchX == null) return;
+      const dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+      touchX = null;
+    }, { passive: true });
+
+    render();
+  </script>
+</body>
+</html>
