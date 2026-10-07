@@ -26,6 +26,7 @@ AGE–RAGE on gingival fibroblasts → IL-6/IL-8; RANK/RANKL/OPG bone axis; oral
 
 - Uncontrolled T2D raises risk/severity of periodontitis; diabetes linked to tooth loss, xerostomia, caries, candidiasis, delayed healing (Genco & Borgnakke, 2020).
 - EFP–WONCA consensus: periodontitis independently associated with diabetes; co-management recommended (Herrera et al., 2023).
+- Current interdisciplinary call: an EFP/EADPH working group with WONCA Europe, the World Heart Federation, and primary-care partners urges co-screen and co-manage action (Kebschull et al., 2026). Periodontal treatment improves glycemic and inflammatory/vascular surrogate markers; evidence for hard clinical endpoints is still thinner.
 - Mechanisms: dysbiosis, immune dysfunction, AGE–RAGE, impaired bone regeneration (Graves et al., 2026; Badiger et al., 2019; Alexander et al., 2024).
 - Periodontal therapy ≈ −0.43% HbA1c (Graves et al., 2026).
 - Experimental AGE–RAGE cytokine drive attenuated by vitamin D (Elenkova et al., 2019).
@@ -35,10 +36,11 @@ AGE–RAGE on gingival fibroblasts → IL-6/IL-8; RANK/RANKL/OPG bone axis; oral
 1. Graves et al. (2026). J Dent Res. https://doi.org/10.1177/00220345251388340
 2. Genco & Borgnakke (2020). Periodontol 2000. https://doi.org/10.1111/prd.12270
 3. Herrera et al. (2023). J Clin Periodontol. https://doi.org/10.1111/jcpe.13807
-4. Alexander et al. (2024). Int J Mol Sci. https://doi.org/10.3390/ijms25137105
-5. Isola et al. (2023). Mediators Inflamm. https://doi.org/10.1155/2023/9720947
-6. Badiger et al. (2019). Curr Diabetes Rev. https://doi.org/10.2174/1573399815666190115144534
-7. Elenkova et al. (2019). J Periodontal Res. https://doi.org/10.1111/jre.12613
+4. Kebschull et al. (2026). Periodontol 2000. https://doi.org/10.1111/prd.70086. PMID 42670753.
+5. Alexander et al. (2024). Int J Mol Sci. https://doi.org/10.3390/ijms25137105
+6. Isola et al. (2023). Mediators Inflamm. https://doi.org/10.1155/2023/9720947
+7. Badiger et al. (2019). Curr Diabetes Rev. https://doi.org/10.2174/1573399815666190115144534
+8. Elenkova et al. (2019). J Periodontal Res. https://doi.org/10.1111/jre.12613
 
 Pathway maps: KEGG hsa04933, hsa04930; Reactome R-HSA-879415.
 
