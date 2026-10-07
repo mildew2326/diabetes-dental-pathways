@@ -27,7 +27,7 @@ AGE–RAGE on gingival fibroblasts → IL-6/IL-8; RANK/RANKL/OPG bone axis; oral
 - Uncontrolled T2D raises risk/severity of periodontitis; diabetes linked to tooth loss, xerostomia, caries, candidiasis, delayed healing (Genco & Borgnakke, 2020).
 - EFP–WONCA consensus: periodontitis independently associated with diabetes; co-management recommended (Herrera et al., 2023).
 - Mechanisms: dysbiosis, immune dysfunction, AGE–RAGE, impaired bone regeneration (Graves et al., 2026; Badiger et al., 2019; Alexander et al., 2024).
-- Periodontal therapy ≈ −0.43% HbA1c (Graves et al., 2026).
+- Periodontal therapy ≈ −0.43% HbA1c (Graves et al., 2026). Supportive note: a 2026 Nigerian before–after nonsurgical periodontal therapy study (n=45 with diabetes) reported about a 0.78% HbA1c reduction and lower hsCRP, alongside mouthrinse aMMP-8 improvement (Umeizudike et al., 2026). Supportive of a therapy-to-glycemic benefit, but single-arm and not a replacement for the ~0.43% pooled estimate. Mouthrinse aMMP-8 point-of-care monitoring is an adjunct, not a diagnosis — see [ammp8-patient-education](https://github.com/mildew2326/ammp8-patient-education).
 - Experimental AGE–RAGE cytokine drive attenuated by vitamin D (Elenkova et al., 2019).
 
 ## References
@@ -39,6 +39,7 @@ AGE–RAGE on gingival fibroblasts → IL-6/IL-8; RANK/RANKL/OPG bone axis; oral
 5. Isola et al. (2023). Mediators Inflamm. https://doi.org/10.1155/2023/9720947
 6. Badiger et al. (2019). Curr Diabetes Rev. https://doi.org/10.2174/1573399815666190115144534
 7. Elenkova et al. (2019). J Periodontal Res. https://doi.org/10.1111/jre.12613
+8. Umeizudike, K. A., et al. (2026). Periodontal Therapy-Related Changes in Clinical Parameters, Active-Matrix Metalloproteinase-8 and C-Reactive Protein in Prediabetes and Diabetes. Oral Diseases. https://doi.org/10.1111/odi.70481 PMID: 42745208
 
 Pathway maps: KEGG hsa04933, hsa04930; Reactome R-HSA-879415.
 
